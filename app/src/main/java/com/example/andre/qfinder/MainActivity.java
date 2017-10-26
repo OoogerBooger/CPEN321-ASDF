@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private PopupWindow popupWindow;
     private LayoutInflater layoutInflater;
-    private RelativeLayout relativeLayout;
+    //private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user tries to enter room */
     public void enterRoom(View view) {
+        RelativeLayout relativeLayout;
         // Do something in response to button
         Intent intent = new Intent(this, EnterRoomActivity.class);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         // If valid room_code then send to room.
         // Else give popup that it's invalid room.
-        if ( room_code == "asdf" ) {
+        if ( room_code.equals("asdf")  ) {
             intent.putExtra(EXTRA_MESSAGE, room_code);
             startActivity(intent);
         }
