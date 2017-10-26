@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">QFinder</string>
-    <string name="edit_message">Enter a message</string>
-    <string name="button_send">Send</string>
-    <string name="enter_roomcode">Enter a Room Code</string>
-    <string name="roomcode_send">Enter Room</string>
-    <string name="button_roomcreate">Create Room</string>
-    <string name="start_quiz">Start Quiz</string>
-</resources>
