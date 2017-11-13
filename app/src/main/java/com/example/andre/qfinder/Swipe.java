@@ -9,8 +9,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+
+
 public class Swipe extends AppCompatActivity {
 
+    public static final int QUIZ_SIZE = 7;
     private ArrayList<String> quiz;
     private ArrayList<String> quiz_display;
     private ArrayList<Integer> quiz_result;
@@ -50,7 +53,7 @@ public class Swipe extends AppCompatActivity {
             public void onSwipeLeft(){
                 quiz.remove(0);
                 arrayAdapter.notifyDataSetChanged();
-                quiz_result.add(0);
+                quiz_result.add(-1);
                 quiz_index ++;
                 if (quiz.size() == 0){
                     Intent intent = new Intent(context, Results.class);
