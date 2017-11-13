@@ -42,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user tries to enter room */
     public void enterRoom(View view) {
-        RelativeLayout relativeLayout;
+
         // Do something in response to button
         Intent intent = new Intent(this, EnterRoomActivity.class);
+        Intent intent2 = new Intent(this, InvalidRoomCode.class);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
 
         String room_code = editText2.getText().toString();
-        relativeLayout = (RelativeLayout) findViewById(R.id.relative);
+
 
         // If valid room_code then send to room.
         // Else give popup that it's invalid room.
@@ -57,19 +58,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else {
-            layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-            ViewGroup container = (ViewGroup) layoutInflater.inflate(R.layout.roomcode_popup,null);
-
-            popupWindow = new PopupWindow(container, 400, 400, true);
-            popupWindow.showAtLocation(relativeLayout, Gravity.NO_GRAVITY, 500,500);
-
-            container.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    popupWindow.dismiss();
-                    return true;
-                }
-            });
+            intent.putExtra(EXTRA_MESSAGE, room_code);
+            startActivity(intent2);
         }
         /*
         intent.putExtra(EXTRA_MESSAGE, room_code);
