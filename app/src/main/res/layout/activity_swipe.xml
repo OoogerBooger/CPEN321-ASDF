@@ -9,34 +9,35 @@
     <ListView
         android:id="@+id/swipey"
         android:layout_width="368dp"
-        android:layout_height="197dp"
+        android:layout_height="435dp"
         android:background="@android:color/transparent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"></ListView>
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="79dp"
-        android:layout_height="86dp"
+        android:layout_width="42dp"
+        android:layout_height="60dp"
         app:srcCompat="@drawable/green_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintHorizontal_bias="1.0"
         android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="79dp"
-        android:layout_height="86dp"
-        app:srcCompat="@drawable/red_arrow"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="42dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="16dp"
-        app:layout_constraintVertical_bias="0.505" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/red_arrow" />
 
 </android.support.constraint.ConstraintLayout>
