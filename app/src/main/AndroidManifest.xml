@@ -27,6 +27,7 @@
         <activity android:name=".Swipe" />
         <activity android:name=".Results" />
         <activity android:name=".InvalidRoomCode"></activity>
+        <uses-permission android:name="android.permission.INTERNET" />
     </application>
 
 </manifest>
