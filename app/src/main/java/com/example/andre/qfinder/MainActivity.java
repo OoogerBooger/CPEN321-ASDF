@@ -70,6 +70,17 @@ public class MainActivity extends AppCompatActivity {
     public void createRoom(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, EnterRoomActivity.class);
+
+        int Min = 10000;
+        int Max = 99999;
+        String room_code;
+
+        // Generate random code from [10000,99999] inclusive
+        int int_code = Min + (int)(Math.random() * ((Max - Min) + 1));
+        //int int_code = 12345;
+        room_code = Integer.toString(int_code);
+
+        intent.putExtra(EXTRA_MESSAGE,room_code);
         startActivity(intent);
     }
 
