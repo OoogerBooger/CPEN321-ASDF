@@ -19,6 +19,7 @@ public class Swipe extends AppCompatActivity {
     private ArrayList<Integer> quiz_result;
     private ArrayAdapter<String> arrayAdapter;
     private int quiz_index;
+    private String question = "";
 
     Context context = this;
 
@@ -29,13 +30,11 @@ public class Swipe extends AppCompatActivity {
 
         ListView lv = (ListView) findViewById(R.id.swipey);
         quiz = new ArrayList<>();
-        quiz.add("Q1: Is spending over $15 okay?");
-        quiz.add("Q2: Do there need to be vegetarian options?");
-        quiz.add("Q3:");
-        quiz.add("Q4:");
-        quiz.add("Q5:");
-        quiz.add("Q6:");
-        quiz.add("Q7:");
+
+        for (int i = 0; i < QUIZ_SIZE; i ++){
+            //get question from quiz table index i              atch
+            quiz.add(question);
+        }
 
         quiz_display = new ArrayList<>();
 
