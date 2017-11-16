@@ -33,6 +33,7 @@ public class Swipe extends AppCompatActivity {
 
         for (int i = 0; i < QUIZ_SIZE; i ++){
             //get question from quiz table index i              atch
+            question = Integer.toString(i); // dummy code
             quiz.add(question);
         }
 

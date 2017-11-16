@@ -41,6 +41,7 @@ public class EnterRoomActivity extends AppCompatActivity {
                 question = "predefined q2"; //TODO: change this to the actual question
             else if (i > 1 && i < 4) {
                 rand_int = r.nextInt(CULTURAL_Q_SIZE);
+                question = Integer.toString(i); // dummy code
                 //question = get question from cultural q table         atch
                 while (question == quiz.get(i-1)){
                     rand_int = (rand_int + 1 ) % CULTURAL_Q_SIZE;
@@ -49,6 +50,7 @@ public class EnterRoomActivity extends AppCompatActivity {
             }
             else {
                 rand_int = r.nextInt(RANDOM_Q_SIZE);
+                question = Integer.toString(i); // dummy code
                 //question = get question from random q table           atch
                 while (question == quiz.get(i-1)){
                     rand_int = (rand_int + 1 ) % RANDOM_Q_SIZE;
