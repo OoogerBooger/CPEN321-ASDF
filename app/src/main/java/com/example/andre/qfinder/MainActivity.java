@@ -12,11 +12,24 @@ import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
+import com.microsoft.windowsazure.mobileservices.MobileServiceClient;
+import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
+
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
+    /**
+     * Mobile Service Client reference
+     */
+    private MobileServiceClient mClient;
+
+    /**
+     * Mobile Service Table used to access data
+     */
+    private MobileServiceTable<Room> mRoomTable;
 
     private PopupWindow popupWindow;
     private LayoutInflater layoutInflater;
@@ -27,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AzureServiceAdapter.Initialize(this);
-
+        mClient = AzureServiceAdapter.getInstance().getClient();
+        mRoomTable = mClient.getTable(Room.class);
     }
 
     /** Called when the user taps the Send button */
@@ -79,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
         int int_code = Min + (int)(Math.random() * ((Max - Min) + 1));
         //int int_code = 12345;
         room_code = Integer.toString(int_code);
+        Room newRoom = new Room(room_code);
+        newRoom.generateQuiz();
+        mRoomTable.insert(newRoom);
 
         intent.putExtra(EXTRA_MESSAGE,room_code);
         startActivity(intent);

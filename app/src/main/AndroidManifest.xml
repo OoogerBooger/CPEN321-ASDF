@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.andre.qfinder">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,6 @@
         <activity android:name=".Swipe" />
         <activity android:name=".Results" />
         <activity android:name=".InvalidRoomCode"></activity>
-        <uses-permission android:name="android.permission.INTERNET" />
     </application>
 
 </manifest>
