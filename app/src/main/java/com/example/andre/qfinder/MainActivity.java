@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public void enterRoom(View view) {
 
         // Do something in response to button
-        Intent intent = new Intent(this, EnterRoomActivity.class);
+        Intent intent = new Intent(this, GuestWaitRoom.class);
         Intent intent2 = new Intent(this, InvalidRoomCode.class);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
 
@@ -67,12 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
         // If valid room_code then send to room.
         // Else give popup that it's invalid room.
+        /* INSERT CODE TO CHECK IF ROOM IS VALID IN TABLES  atch */
         if ( room_code.equals("asdf")  ) {
             intent.putExtra(EXTRA_MESSAGE, room_code);
             startActivity(intent);
         }
         else {
-            intent.putExtra(EXTRA_MESSAGE, room_code);
+            intent2.putExtra(EXTRA_MESSAGE, room_code);
             startActivity(intent2);
         }
         /*
