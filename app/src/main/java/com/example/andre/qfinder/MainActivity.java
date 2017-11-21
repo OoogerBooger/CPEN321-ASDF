@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         // If valid room_code then send to room.
         // Else give popup that it's invalid room.
-        /* INSERT CODE TO CHECK IF ROOM IS VALID IN TABLES  atch */
+        /* TODO INSERT CODE TO CHECK IF ROOM IS VALID IN TABLES  */
         if ( room_code.equals("asdf")  ) {
             intent.putExtra(EXTRA_MESSAGE, room_code);
             startActivity(intent);

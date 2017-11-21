@@ -17,8 +17,8 @@ public class Results extends AppCompatActivity {
         Intent intent = getIntent();
         final String room_code = intent.getStringExtra("room");
         //results = getIntent().getIntegerArrayListExtra("results");
-        //pull the results from the server          atch
-        // TODO change the view of the results to a list vies
+        //TODO pull the results from the server
+        // TODO change the view of the results to a list view (not server related)
 
     }
 }

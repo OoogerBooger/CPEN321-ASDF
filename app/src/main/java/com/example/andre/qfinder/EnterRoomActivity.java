@@ -48,10 +48,10 @@ public class EnterRoomActivity extends AppCompatActivity {
             else if (i > 1 && i < 4) {
                 rand_int = r.nextInt(CULTURAL_Q_SIZE);
                 question = Integer.toString(i); // dummy code
-                //question = get question from cultural q table         atch
+                //TODO question = get question from cultural q table
                 while (question == quiz.get(i-1)){
                     rand_int = (rand_int + 1 ) % CULTURAL_Q_SIZE;
-                    //question = get question from cultural q table     atch
+                    //TODO question = get question from cultural q table
                 }
                 tag = Integer.toString(i); //dummy code
                 //tag = get the tag associated to question
@@ -59,18 +59,18 @@ public class EnterRoomActivity extends AppCompatActivity {
             else {
                 rand_int = r.nextInt(RANDOM_Q_SIZE);
                 question = Integer.toString(i); // dummy code
-                //question = get question from random q table           atch
+                //TODO question = get question from random q table
                 while (question == quiz.get(i-1)){
                     rand_int = (rand_int + 1 ) % RANDOM_Q_SIZE;
-                    //question = get question from random q table       atch
+                    //TODO question = get question from random q table       atch
                 }
                 tag = Integer.toString(i); //dummy code
-                //tag = get the tag associated to question use rand_int
+                //TODO tag = get the tag associated to question use rand_int
             }
             quiz.add(question);
         }
         for (int i = 0; i < quiz.size(); i ++){
-            //send quix.get(i) to the quiz table                        atch
+            //TODO send quiz.get(i) to the quiz table
         }
 
     }
