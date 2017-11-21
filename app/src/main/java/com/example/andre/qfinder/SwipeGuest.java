@@ -13,7 +13,7 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 
-public class Swipe extends AppCompatActivity {
+public class SwipeGuest extends AppCompatActivity {
 
     public static final int QUIZ_SIZE = 7;
     private ArrayList<String> quiz;
@@ -70,6 +70,10 @@ public class Swipe extends AppCompatActivity {
                             //TODO decrement result
                         }
                     }
+                    //TODO increment quiz_complete counter on room table
+                    while(TRUE){
+                        //TODO keep checking for quiz done to be 1 on room table
+                    }
                     Intent intent = new Intent(context, Results.class);
                     //intent.putIntegerArrayListExtra("results" , quiz_result);
                     intent.putExtra("room",room_code);
@@ -96,8 +100,9 @@ public class Swipe extends AppCompatActivity {
                             //TODO decrement result
                         }
                     }
+                    //TODO increment quiz_complete counter on room table
                     while(TRUE){
-                        //TODO keep checking for quiz_complete counter on table to be at the right number
+                        //TODO keep checking for quiz done to be 1 on room table
                     }
                     Intent intent = new Intent(context, Results.class);
                     //intent.putIntegerArrayListExtra("results" , quiz_result);

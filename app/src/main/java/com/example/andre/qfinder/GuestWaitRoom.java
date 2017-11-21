@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class GuestWaitRoom extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +20,7 @@ public class GuestWaitRoom extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = (TextView) findViewById(R.id.textView8);
         textView.setText("Room Code: " + room_code);
+
+        intent.putExtra(EXTRA_MESSAGE,room_code);
     }
 }
