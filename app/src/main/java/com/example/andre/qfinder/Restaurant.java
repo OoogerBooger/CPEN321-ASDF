@@ -1,5 +1,7 @@
 package com.example.andre.qfinder;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static java.lang.Boolean.FALSE;
@@ -42,6 +44,9 @@ public class Restaurant {
         return tags;
     }
 
+    public URL url;
+    public String stringURL;
+
     public void addTags(String tag){
         tags.add(tag);
     }
@@ -52,6 +57,23 @@ public class Restaurant {
             return TRUE;
         }
         return FALSE;
+    }
+
+    public URL getUrl(){
+        return url;
+    }
+
+    public String getStringURL(){
+        return stringURL;
+    }
+
+    public void setUrl(String input){
+        stringURL = input;
+        try {
+            url = new URL(input);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
     /*public boolean isPrice() {
         return price;
