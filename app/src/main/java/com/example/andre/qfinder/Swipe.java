@@ -130,14 +130,14 @@ public class Swipe extends AppCompatActivity {
         mandatory.add(new Question("Is fast food okay?","fast"));
         mandatory.add(new Question("Are you looking for dinner?","dinner"));
 
-        cultural.add(new Question("Western food?","western"));
-        cultural.add(new Question("Middle eastern food?","middle"));
-        cultural.add(new Question("Asian food?","asian"));
+        cultural.add(new Question("Would you like western food?","western"));
+        cultural.add(new Question("Are you okay with middle eastern food?","middle"));
+        cultural.add(new Question("Would you like asian food?","asian"));
 
-        random.add(new Question("Vegetarian?","vegetarian"));
-        random.add(new Question("Dessert?","dessert"));
-        random.add(new Question("Spicy food?","spicy"));
-        random.add(new Question("Sit-down restaurant?","sit"));
+        random.add(new Question("Are you okay with vegetarian food?","vegetarian"));
+        random.add(new Question("Would you like dessert?","dessert"));
+        random.add(new Question("Are you okay with spicy food?","spicy"));
+        random.add(new Question("Would you like to go to a sit-down restaurant?","sit"));
     }
 
 }
