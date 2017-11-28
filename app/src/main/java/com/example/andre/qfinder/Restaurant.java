@@ -1,13 +1,18 @@
 package com.example.andre.qfinder;
 
+import java.util.ArrayList;
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 /**
  * Created by py344 on 2017-11-13.
  */
 
 public class Restaurant {
-    private String id;
+    private ArrayList<String> tags = new ArrayList<>();
     private String restaurantName;
-    private String yelpURL;
+    /*private String yelpURL;
     private boolean price;
     private boolean fastFood;
     private boolean lunch;
@@ -19,22 +24,36 @@ public class Restaurant {
     private boolean vegetarian;
     private boolean dessert;
     private boolean spicy;
-    private boolean sitDown;
+    private boolean sitDown;*/
 
 
     public Restaurant() {
-
+        restaurantName = "";
     }
 
+    public Restaurant(String name){
+        restaurantName = name;
+    }
     public String getRestaurantName() {
         return restaurantName;
     }
 
-    public String getYelpURL() {
-        return yelpURL;
+    public ArrayList<String> getTags() {
+        return tags;
     }
 
-    public boolean isPrice() {
+    public void addTags(String tag){
+        tags.add(tag);
+    }
+
+    public boolean isTag(String tag){
+        for (int i = 0; i < tags.size(); i ++){
+            if (tags.get(i) == tag);
+            return TRUE;
+        }
+        return FALSE;
+    }
+    /*public boolean isPrice() {
         return price;
     }
 
@@ -80,5 +99,5 @@ public class Restaurant {
 
     public boolean isSitDown() {
         return sitDown;
-    }
+    }*/
 }

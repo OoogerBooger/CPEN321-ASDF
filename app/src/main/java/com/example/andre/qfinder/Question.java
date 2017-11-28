@@ -1,24 +1,31 @@
 package com.example.andre.qfinder;
 
+import java.util.ArrayList;
+
 /**
  * Created by py344 on 2017-11-13.
  */
 
 public class Question {
-    private String id;
-    private String questionID;
-    private String questionText;
+    private String question;
+    private String tag;
 
 
     public Question() {
-
+        question = "";
+        tag = "";
     }
 
-    public String getQuestionID() {
-        return questionID;
+    public Question(String in_question, String in_tag){
+        question = in_question;
+        tag = in_tag;
     }
 
-    public String getQuestionText() {
-        return questionText;
+    public String getQuestion() {
+        return question;
+    }
+
+    public String getQuestionTag() {
+        return tag;
     }
 }

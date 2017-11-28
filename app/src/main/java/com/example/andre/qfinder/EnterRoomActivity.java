@@ -30,13 +30,13 @@ public class EnterRoomActivity extends AppCompatActivity {
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         String room_code = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        quiz = new ArrayList<String>();
+        //quiz = new ArrayList<String>();
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = (TextView) findViewById(R.id.textView5);
         textView.setText("Room Code: " + room_code);
 
-        for (int i = 0; i < QUIZ_SIZE; i ++){
+        /*for (int i = 0; i < QUIZ_SIZE; i ++){
             if (i == 0) {
                 question = "Are you comfortable with spending over $15?";
                 tag = "cheap"; //TODO change to appropriate tag
@@ -71,7 +71,7 @@ public class EnterRoomActivity extends AppCompatActivity {
         }
         for (int i = 0; i < quiz.size(); i ++){
             //TODO send quiz.get(i) to the quiz table
-        }
+        }*/
 
     }
 

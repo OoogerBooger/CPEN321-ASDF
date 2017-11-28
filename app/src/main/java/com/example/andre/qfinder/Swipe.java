@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -16,13 +17,21 @@ import static java.lang.Boolean.TRUE;
 public class Swipe extends AppCompatActivity {
 
     public static final int QUIZ_SIZE = 7;
-    private ArrayList<String> quiz;
+    public static final int CULTURAL_Q_SIZE = 3;
+    public static final int RANDOM_Q_SIZE = 4;
+    private ArrayList<Question> mandatory_qs = new ArrayList<>();
+    private ArrayList<Question> cultural_qs = new ArrayList<>();
+    private ArrayList<Question> random_qs = new ArrayList<>();
+    private ArrayList<String> quiz_tags = new ArrayList<>();
+    private ArrayList<Question> quiz;
     private ArrayList<String> quiz_display;
-    private ArrayList<Boolean> quiz_result;
+    private ArrayList<Integer> quiz_result;
     private ArrayAdapter<String> arrayAdapter;
-    private int quiz_index;
-    private String question = "";
+    private int quiz_index = 0;
+    private Question question;
     private String tag = "";
+    private int rand_int = 0;
+    Random r = new Random();
 
     Context context = this;
 
@@ -31,21 +40,40 @@ public class Swipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
 
-        Intent intent = getIntent();
-        final String room_code = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        //Intent intent = getIntent();
+        //final String room_code = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        create_questions(mandatory_qs, cultural_qs, random_qs);
+
 
         ListView lv = (ListView) findViewById(R.id.swipey);
         quiz = new ArrayList<>();
 
         for (int i = 0; i < QUIZ_SIZE; i ++){
-            //TODO get question from quiz table index i
-            question = Integer.toString(i); // dummy code
+            if (i < 3){
+                question = mandatory_qs.get(i);
+            }
+            else if (i > 2 && i < 5) {
+                rand_int = r.nextInt(CULTURAL_Q_SIZE);
+                question = cultural_qs.get(rand_int);
+                while (question == quiz.get(i-1)){
+                    rand_int = (rand_int + 1 ) % CULTURAL_Q_SIZE;
+                    question = cultural_qs.get(rand_int);
+                }
+            }
+            else {
+                rand_int = r.nextInt(RANDOM_Q_SIZE);
+                question = random_qs.get(rand_int);
+                while (question == quiz.get(i-1)){
+                    rand_int = (rand_int + 1) % RANDOM_Q_SIZE;
+                    question = random_qs.get(rand_int);
+                }
+            }
             quiz.add(question);
         }
-
         quiz_display = new ArrayList<>();
 
-        quiz_display.add(quiz.get(0));
+        quiz_display.add(quiz.get(0).getQuestion());
 
         quiz_result = new ArrayList<>();
 
@@ -57,59 +85,59 @@ public class Swipe extends AppCompatActivity {
         lv.setOnTouchListener(new OnSwipeTouchListener(this){
             @Override
             public void onSwipeLeft(){
+                quiz_tags.add(quiz.get(0).getQuestionTag());
                 quiz.remove(0);
                 arrayAdapter.notifyDataSetChanged();
-                quiz_result.add(FALSE);
+                quiz_result.add(0);
                 quiz_index ++;
-                if (quiz.size() == 0){
-                    for (int i = 0; i < quiz_result.size(); i ++) {
-                        //TODO server code that increments/decrements quiz result based on swipe results
-                        if (quiz_result.get(i)) {
-                            //TODO increment result
-                        } else {
-                            //TODO decrement result
-                        }
-                    }
+                if (quiz_index == QUIZ_SIZE){
                     Intent intent = new Intent(context, Results.class);
-                    //intent.putIntegerArrayListExtra("results" , quiz_result);
-                    intent.putExtra("room",room_code);
+                    intent.putIntegerArrayListExtra("results" , quiz_result);
+                    intent.putStringArrayListExtra("tags", quiz_tags);
+                    //intent.putExtra("room",room_code);
                     startActivity(intent);
                     finish();
                 }
                 else {
                     quiz_display.remove(0);
-                    quiz_display.add(quiz.get(0));
+                    quiz_display.add(quiz.get(0).getQuestion());
                 }
             }
 
             public void onSwipeRight(){
+                quiz_tags.add(quiz.get(0).getQuestionTag());
                 quiz.remove(0);
                 arrayAdapter.notifyDataSetChanged();
-                quiz_result.add(TRUE);
+                quiz_result.add(1);
                 quiz_index ++;
-                if (quiz.size() == 0){
-                    for (int i = 0; i < quiz_result.size(); i ++) {
-                        //TODO server code that increments/decrements quiz result based on swipe results
-                        if (quiz_result.get(i)) {
-                            //TODO increment result
-                        } else {
-                            //TODO decrement result
-                        }
-                    }
-                    while(TRUE){
-                        //TODO keep checking for quiz_complete counter on table to be at the right number
-                    }
+                if (quiz_index == QUIZ_SIZE){
                     Intent intent = new Intent(context, Results.class);
-                    //intent.putIntegerArrayListExtra("results" , quiz_result);
-                    intent.putExtra("room",room_code);
+                    intent.putIntegerArrayListExtra("results" , quiz_result);
+                    intent.putStringArrayListExtra("tags", quiz_tags);
                     startActivity(intent);
                     finish();
                 }
                 else {
                     quiz_display.remove(0);
-                    quiz_display.add(quiz.get(0));
+                    quiz_display.add(quiz.get(0).getQuestion());
                 }
             }
         });
     }
+
+    public void create_questions(ArrayList<Question> mandatory, ArrayList<Question> cultural, ArrayList<Question> random){
+        mandatory.add(new Question("Are you comfortable with spending $15 or more","cheap")); //TODO: actual price question
+        mandatory.add(new Question("Is fast food okay?","fast"));
+        mandatory.add(new Question("Are you looking for dinner?","dinner"));
+
+        cultural.add(new Question("Western food?","western"));
+        cultural.add(new Question("Middle eastern food?","middle"));
+        cultural.add(new Question("Asian food?","asian"));
+
+        random.add(new Question("Vegetarian?","vegetarian"));
+        random.add(new Question("Dessert?","dessert"));
+        random.add(new Question("Spicy food?","spicy"));
+        random.add(new Question("Sit-down restaurant?","sit"));
+    }
+
 }
