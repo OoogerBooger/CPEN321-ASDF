@@ -39,20 +39,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AzureServiceAdapter.Initialize(this);
+        /*AzureServiceAdapter.Initialize(this);
         mClient = AzureServiceAdapter.getInstance().getClient();
-        mRoomTable = mClient.getTable(Room.class);
+        mRoomTable = mClient.getTable(Room.class);*/
     }
 
     /** Called when the user taps the Send button */
-    public void sendMessage(View view) {
+   /* public void sendMessage(View view) {
         // Do something in response to button
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
-    }
+    }*/
 
     /** Called when the user tries to enter room */
     public void enterRoom(View view) {
@@ -94,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
         int int_code = Min + (int)(Math.random() * ((Max - Min) + 1));
         //int int_code = 12345;
         room_code = Integer.toString(int_code);
-        Room newRoom = new Room(room_code);
-        newRoom.generateQuiz();
-        mRoomTable.insert(newRoom);
+        //Room newRoom = new Room(room_code);
+        //newRoom.generateQuiz();
+        //mRoomTable.insert(newRoom);
 
         intent.putExtra(EXTRA_MESSAGE,room_code);
         startActivity(intent);

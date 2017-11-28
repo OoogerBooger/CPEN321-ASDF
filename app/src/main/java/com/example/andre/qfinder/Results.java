@@ -1,5 +1,6 @@
 package com.example.andre.qfinder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class Results extends AppCompatActivity {
     private ArrayList<Restaurant> intermediate4 = new ArrayList<>();
     private ArrayList<Restaurant> intermediate5 = new ArrayList<>();
     private ArrayList<Restaurant> intermediate6 = new ArrayList<>();
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -216,6 +218,13 @@ public class Results extends AppCompatActivity {
         Uri uri = Uri.parse(restaurantURL); // missing 'http://' will cause crashed
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    public void restartQuiz(View view){
+        Context context = this;
+        Intent intent = new Intent(context, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void create_restaurants(ArrayList<Restaurant> restaurants){
