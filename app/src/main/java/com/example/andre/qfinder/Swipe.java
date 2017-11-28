@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,7 +25,7 @@ public class Swipe extends AppCompatActivity {
     private ArrayList<Question> random_qs = new ArrayList<>();
     private ArrayList<String> quiz_tags = new ArrayList<>();
     private ArrayList<Question> quiz;
-    private ArrayList<String> quiz_display;
+    private String quiz_display;
     private ArrayList<Integer> quiz_result;
     private ArrayAdapter<String> arrayAdapter;
     private int quiz_index = 0;
@@ -46,7 +47,7 @@ public class Swipe extends AppCompatActivity {
         create_questions(mandatory_qs, cultural_qs, random_qs);
 
 
-        ListView lv = (ListView) findViewById(R.id.swipey);
+        final TextView text = (TextView) findViewById(R.id.swipey);
         quiz = new ArrayList<>();
 
         for (int i = 0; i < QUIZ_SIZE; i ++){
@@ -71,23 +72,24 @@ public class Swipe extends AppCompatActivity {
             }
             quiz.add(question);
         }
-        quiz_display = new ArrayList<>();
+        //quiz_display = new ArrayList<>();
 
-        quiz_display.add(quiz.get(0).getQuestion());
+        quiz_display = quiz.get(quiz_index).getQuestion();
+        text.setText(quiz_display);
 
         quiz_result = new ArrayList<>();
 
 
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quiz_display);
+        //arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quiz_display);
 
-        lv.setAdapter(arrayAdapter);
+        //lv.setAdapter(arrayAdapter);
 
-        lv.setOnTouchListener(new OnSwipeTouchListener(this){
+        text.setOnTouchListener(new OnSwipeTouchListener(this){
             @Override
             public void onSwipeLeft(){
                 quiz_tags.add(quiz.get(0).getQuestionTag());
-                quiz.remove(0);
-                arrayAdapter.notifyDataSetChanged();
+                //quiz.remove(0);
+                //arrayAdapter.notifyDataSetChanged();
                 quiz_result.add(0);
                 quiz_index ++;
                 if (quiz_index == QUIZ_SIZE){
@@ -99,15 +101,16 @@ public class Swipe extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    quiz_display.remove(0);
-                    quiz_display.add(quiz.get(0).getQuestion());
+                    //quiz_display.remove(0);
+                    quiz_display = quiz.get(quiz_index).getQuestion();
+                    text.setText(quiz_display);
                 }
             }
 
             public void onSwipeRight(){
                 quiz_tags.add(quiz.get(0).getQuestionTag());
-                quiz.remove(0);
-                arrayAdapter.notifyDataSetChanged();
+                //quiz.remove(0);
+                //arrayAdapter.notifyDataSetChanged();
                 quiz_result.add(1);
                 quiz_index ++;
                 if (quiz_index == QUIZ_SIZE){
@@ -118,8 +121,9 @@ public class Swipe extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    quiz_display.remove(0);
-                    quiz_display.add(quiz.get(0).getQuestion());
+                    //quiz_display.remove(0);
+                    quiz_display = quiz.get(quiz_index).getQuestion();
+                    text.setText(quiz_display);
                 }
             }
         });
